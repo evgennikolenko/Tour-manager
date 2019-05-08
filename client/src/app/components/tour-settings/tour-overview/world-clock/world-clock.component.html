@@ -1,0 +1,8 @@
+<ngx-slick-carousel class="carousel"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let place of this.selectedPlaces" class="slide">
+    <app-clock [place]="place"></app-clock>
+    <div class="place__info">{{place.city}}, {{place.country}}</div>
+  </div>
+</ngx-slick-carousel>

@@ -1,0 +1,55 @@
+.flexible__weather{
+  display: inline-block;
+  width: auto;
+  margin-right: 30px;
+  .place__info{
+    font-size: 17px;
+    font-family: 'Montserrat', 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #dce2d9;
+  }
+    app-weather-in-city{
+      display: inline-block;
+      width: auto;
+
+      bs-tooltip-container{
+        width: 1090px;
+        height: auto;
+        padding: 10px;
+        background: none;
+        opacity: 1;
+        background: green;
+        .tooltip-inner{
+          background: brown;
+          opacity: 1;
+          width: 100%;
+          max-width: none;
+          .tooltip__weather{
+            .tooltip__weather__block{
+              width: 200px;
+              display: inline-block;
+              height: 100px;
+              margin-right: 10px;
+              background: yellow;
+              div{
+                color: green;
+              }
+            }
+
+          }
+        }
+      }
+
+    }
+}
+
+.place__info__weather{
+  font-size: 17px;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: #dce2d9;
+  adding-top: 6px;
+}
+

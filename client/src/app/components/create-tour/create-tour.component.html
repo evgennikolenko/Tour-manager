@@ -1,0 +1,138 @@
+<div class="create-tour">
+  <div class="create-tour-center">
+    <div class="form__wrapper">
+    </div>
+    <form [formGroup]="CreateTourForm" (ngSubmit)="submitForm(CreateTourForm)" class="create-tour__form">
+      <h3>New Tour</h3>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Start date
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+            <input [formControl]="this.CreateTourForm.controls.startDate" matInput [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="this.CreateTourForm.controls.startDate.invalid && this.CreateTourForm.controls.startDate.dirty">
+              {{this.CreateTourForm.controls.startDate.errors.message}}
+            </mat-error>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              End date
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput [formControl]="this.CreateTourForm.controls.endDate" [matDatepicker]="picker2" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="this.CreateTourForm.controls.endDate.invalid && this.CreateTourForm.controls.endDate.dirty">
+              {{this.CreateTourForm.controls.endDate.errors.message}}
+            </mat-error>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Name
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput [formControl]="this.CreateTourForm.controls.name" placeholder="Name">
+            <mat-error *ngIf="this.CreateTourForm.controls.name.invalid && this.CreateTourForm.controls.name.dirty">
+            Please enter a valid last name
+            </mat-error>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Description
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <textarea matInput [formControl]="this.CreateTourForm.controls.description" placeholder="Description"></textarea>
+            <mat-error *ngIf="this.CreateTourForm.controls.description.invalid && this.CreateTourForm.controls.description.dirty">
+            Please enter a valid description
+            </mat-error>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <div class="staff-container">
+        <div *ngIf="role === 'manager'" class="staff-container__manage" (click)="openManageStaffDialog()">
+          <mat-icon>settings</mat-icon>
+        </div>
+        <div class="staff-container__title">
+          Staff
+        </div>
+        <div class="staff-container__list">
+          <mat-list role="list" *ngFor="let staff of staffList">
+            <mat-list-item role="listitem" ngClass="{{currentUser.email === staff.email ? 'current' : ''}}">
+              <img class="staff__avatar" *ngIf="staff.avatar; else noAvatar" src="{{staff.avatar.path}}">
+              <ng-template #noAvatar>
+                <mat-icon class="staff__avatar" matTooltip="{{staff.invitationStatus !== 'approves' ? 'not approves' : null }}"
+                ngClass="{{staff.invitationStatus !== 'approves' ? 'notApproves' : ''}}">person</mat-icon>
+              </ng-template>
+              <span  ngClass="{{staff.invitationStatus !== 'approves' ? 'notApproves' : ''}}">{{staff.name.firstname}} {{staff.name.lastname}}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div class="staff-container">
+        <div *ngIf="role === 'manager'" class="staff-container__manage" (click)="openManagePlaceDialog()">
+          <mat-icon>edit_location</mat-icon>
+        </div>
+        <div *ngIf="role === 'employee'" class="staff-container__manage" (click)="openManagePlaceDialog()">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div class="staff-container__title">
+          Place
+        </div>
+        <div class="staff-container__list">
+          <mat-list role="list" *ngFor="let place of placesList">
+            <mat-list-item role="listitem">
+              <div>
+              <img src="../../../assets/coutryFlags/blank.gif" class="flag flag-{{place.countryCode}}" alt="{{place.country}}" >
+                </div>
+                {{place.country}}, {{place.state}}, {{place.city}}
+              </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div *ngIf="formError">{{formError}}</div>
+
+      <div class="buttons__block" *ngIf="!isInvitation; else invitation">
+        <button (click)="createCancel()" class="form__cancel" mat-flat-button color="primary">Cancel</button>
+        <button type="submit" *ngIf="MODE==='update' && role === 'manager'"
+                class="form__create" mat-flat-button color="primary">Update</button>
+        <button type="submit" *ngIf="MODE==='create' && role === 'manager'"
+                [disabled]="formSubmitted || CreateTourForm.invalid" class="form__create" mat-flat-button color="primary">Create</button>
+      </div>
+
+      <ng-template #invitation>
+        <div class="buttons__block">
+          <button (click)="createCancel()" class="form__cancel" mat-flat-button color="primary">Cancel</button>
+          <div class="form__create" (click)="approveInvitation(selectedTour.id, 'approves')" class="form__create" mat-flat-button color="primary">Approve</div>
+          <div class="form__create" (click)="rejectInvitation(selectedTour.id, 'rejects')" mat-flat-button color="primary">Reject</div>
+        </div>
+      </ng-template>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="show" class="tour__window" [@slideInOut]>
+  <header>
+    <div class="header__exitButton" (click)="this.exitOnBoard()"></div>
+    <div class="header__yellowButton"></div>
+    <div class="header__greenButton"></div>
+    <span>Tour Settings</span>
+  </header>
+  <app-settings-tabs></app-settings-tabs>
+
+</div>

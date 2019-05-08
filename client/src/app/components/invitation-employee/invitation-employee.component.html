@@ -1,0 +1,19 @@
+<div class="invitation__block">
+
+  <div class="invitation__button" (click)="this.onShowInvitation()"><mat-icon> insert_invitation</mat-icon></div>
+  <div class="invitation__buttonCount" *ngIf="invitations.length !== 0"><span>{{invitations.length}}</span></div>
+  <div class="invitation__list" *ngIf="showInvList && invitations.length !== 0">
+    <mat-list>
+      <mat-list-item *ngFor="let tour of invitations" matTooltip="{{tour.description}}" (click)="selectInvitation(tour.id)">
+        <mat-icon mat-list-icon>event_note</mat-icon>
+        <p mat-line class="tour__name">New tour: {{tour.name}} in {{tour.places[0].country}}</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div class="invitation__warn" *ngIf="showInvList && invitations.length === 0">
+    You have not invitations!
+  </div>
+
+
+</div>

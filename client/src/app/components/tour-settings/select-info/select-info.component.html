@@ -1,0 +1,48 @@
+<div class="tour__info">
+  <div class="name__block">
+    <mat-icon>edit</mat-icon>
+    <div class="name">
+      <mat-form-field>
+        <input matInput placeholder="Name" [formControl]="this.createForm.controls.name">
+        <mat-error *ngIf="this.createForm.controls.name.invalid && this.createForm.controls.name.dirty">
+          Please enter a valid last name
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="description">
+      <mat-form-field>
+        <input matInput placeholder="Description" [formControl]="this.createForm.controls.description">
+        <mat-error *ngIf="this.createForm.controls.description.invalid && this.createForm.controls.description.dirty">
+        Please enter a valid last name
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="date__block">
+    <mat-icon>calendar_today</mat-icon>
+    <div class="start__date">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+               [formControl]="this.createForm.controls.startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="this.createForm.controls.startDate.invalid && this.createForm.controls.startDate.dirty">
+          {{this.createForm.controls.startDate.errors.message}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="end__date">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
+               [formControl]="this.createForm.controls.endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="this.createForm.controls.endDate.invalid && this.createForm.controls.endDate.dirty">
+        {{this.createForm.controls.endDate.errors.message}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </div>
+</div>

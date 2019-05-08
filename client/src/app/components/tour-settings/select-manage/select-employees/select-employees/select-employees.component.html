@@ -1,0 +1,61 @@
+<div class="manage__employees">
+  <div class="employees__container">
+    <nav class="menu">
+      <ul>
+
+        <input #employee__label type="radio" name="menu" id="archive" checked>
+        <li>
+          <label for="archive" class="title" ><i class="fa fa-user"></i>Employees</label>
+          <div *ngFor="let employee of this.employees">
+            <a [ngClass]="{active: isActive(employee)}" (click)="this.select(employee)" [tooltip]="tooltip" placement="left">
+              {{employee.name.firstname[0]}}. {{employee.name.lastname}},
+              <span>{{employee.job.name}}</span>
+            </a>
+
+            <ng-template #tooltip><div class="tooltip__employee" >
+              <img *ngIf="!employee.avatar" src="../../../../../../assets/image/defaultAvatar.png">
+              <img *ngIf="employee.avatar" src="{{employee.avatar.path}}">
+              <div class="tooltip__name">{{employee.name.lastname}} {{employee.name.firstname}}</div>
+              <div>{{employee.job.name}} from {{employee.company.name}}</div></div>
+            </ng-template>
+
+          </div>
+        </li>
+
+        <input type="radio" name="menu" id="edit">
+        <li>
+          <label for="edit" class="title"><i class="fa fa-envelope-open"></i>Invite employee</label>
+          <div class="input-group employee__email">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+            </div>
+          </div>
+        </li>
+
+        <input #salary__label type="radio" name="menu" id="tools">
+        <li>
+          <label  for="tools" class="title"><i class="fa fa-usd"></i>Salary</label>
+
+          <div class="selected__staff" *ngIf="this.selectStaff">
+            Now is selected {{this.selectStaff.name.firstname}} {{this.selectStaff.name.lastname}}
+          </div>
+
+          <div class="input-group employee__salary">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input [(ngModel)]="salary" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+          <button (click)="this.onSelectEmployee(this.selectStaff)" ><mat-icon>add_circle_outline</mat-icon></button>
+          <span class="select__error" style="color:red" *ngIf="error">{{error}}</span>
+
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["env"]
+  ],
+  "plugins": ["transform-object-rest-spread",
+    ["inline-json", {"matchPattern": "config"}],
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]]
+}

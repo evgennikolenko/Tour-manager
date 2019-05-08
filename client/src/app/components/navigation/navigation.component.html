@@ -1,0 +1,37 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <div class="tour__logo">
+    <img src="../../../assets/image/appLogo.png" alt="logo">
+    <a class="navbar-brand">Tour Manager</a>
+  </div>
+
+
+  <div class="navbar__manage">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <div>
+        <span class="avatar" *ngIf="!user || !this.user.avatar; else avatar;"><mat-icon>account_circle</mat-icon></span>
+        <ng-template #avatar>
+          <img class="avatar" src="{{this.user.avatar.path}}" width="30px" height="30px">
+        </ng-template>
+        <span>{{this.user && this.user.name.firstname }}</span>
+        <span> {{this.user && this.user.name.lastname }}</span>
+      </div>
+    </button>
+  </div>
+
+  <mat-menu #menu="matMenu">
+    <button *ngIf="!isProfile; else profile" mat-menu-item>
+      <mat-icon class="nav-drop-item">assignment_ind</mat-icon>
+      <span class="nav-drop-text" (click)="this.onProfilePage()">My account</span>
+    </button>
+    <ng-template #profile>
+      <button mat-menu-item>
+        <mat-icon class="nav-drop-item">dashboard</mat-icon>
+        <span class="nav-drop-text" (click)="this.onReturnOnBoard()">Dashboard</span>
+      </button>
+    </ng-template>
+    <button mat-menu-item>
+      <mat-icon class="nav-drop-item">exit_to_app</mat-icon>
+      <span class="nav-drop-text" (click)="this.onLogout()">Log out</span>
+    </button>
+  </mat-menu>
+</nav>

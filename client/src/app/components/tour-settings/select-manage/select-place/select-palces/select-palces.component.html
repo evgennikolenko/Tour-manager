@@ -1,0 +1,15 @@
+<div class="select__places">
+  <app-places [places]="this.places" (onSelectPlace)="this.selectPlace($event)"></app-places>
+  <app-map
+    #map
+    appId="kG4I8fUQHhzkmmyVJ40I"
+    appCode="iWud5K5czcn5ybaxjczNBQ"
+    lat="51.5085300"
+    lng="-0.1257400"
+    width="580px"
+    height="373px"
+    [selectedPlace]="this.selectedPlace"
+    (selectOnMap)="this.selectOnMap($event)"
+  >
+  </app-map>
+</div>

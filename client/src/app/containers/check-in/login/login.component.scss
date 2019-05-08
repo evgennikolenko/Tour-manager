@@ -1,0 +1,38 @@
+form {
+  margin: auto;
+  display: block;
+  width: 50%;
+  position: relative;
+  height: 250px;
+
+  .form__fields{
+    width: 200px;
+    margin: auto;
+    margin-bottom: 10px;
+
+    mat-form-field{
+      width: 100%;
+      mat-icon{
+        font-size: 18px;
+        position: absolute;
+        top: -13px;
+        left: -18px;
+      }
+    }
+  }
+  .form__fields__error{
+    height: 25px;
+    margin: auto;
+    margin-bottom: 10px;
+    mat-error{
+      font-size: 14px;
+    }
+
+  }
+
+    .login__submit {
+      width: 200px;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }

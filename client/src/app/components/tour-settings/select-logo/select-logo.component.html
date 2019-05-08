@@ -1,0 +1,15 @@
+<div class="select__logo">
+  <div class="logo__wrapper">
+    <div class="logo">
+      <mat-icon>add_photo_alternate</mat-icon>
+      <button (click)="logo.click()">Select</button>
+      <input #logo type="file"  style="display:none;" (change)="upload($event)"/>
+    </div>
+
+    <div class="tour__pictures">
+      <mat-icon>photo_album</mat-icon>
+      <button (click)="pictures.click()">Select</button>
+      <input #pictures type="file"  style="display:none;"/>
+    </div>
+  </div>
+</div>

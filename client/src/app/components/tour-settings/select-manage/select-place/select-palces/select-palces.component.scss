@@ -1,0 +1,15 @@
+.select__places{
+  height: 400px;
+  app-places{
+    display: inline-block;
+    width: 33%;
+    height: 400px;
+    vertical-align: top;
+  }
+  app-map{
+    height: 400px;
+    width: 63%;
+    margin-left: 2%;
+    display: inline-block;
+  }
+}

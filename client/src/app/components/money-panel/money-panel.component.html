@@ -1,0 +1,12 @@
+<div class="money-block">
+
+  <div class="money__button" (click)="this.onShowMoney()"><mat-icon>attach_money</mat-icon></div>
+
+  <div class="money__count" *ngIf="showMoney">
+    <p *ngIf="isManager && !nullCount">Spent money: {{moneyCount}}</p>
+    <p *ngIf="nullCount">Your balance: 0</p>
+    <p *ngIf="!isManager && !nullCount">Earned money:{{moneyCount}}</p>
+  </div>
+
+
+</div>

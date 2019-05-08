@@ -1,0 +1,42 @@
+<div class="board__wrapper">
+  <div class="tourmanager__navbar">
+    <app-navigation [user]="this.user"
+                    (profilePage)="profilePage($event)"
+                    (logout)="logout($event)"
+                    (returnOnBoard)="returnOnBoard($event)"></app-navigation>
+    <!--<nav class="navbar navbar-light bg-light justify-content-between">-->
+      <!--<a class="navbar-brand">Tour Manager</a>-->
+
+      <!--<div class="navbar__manage">-->
+        <!--<button mat-icon-button [matMenuTriggerFor]="menu">-->
+          <!--<div>-->
+            <!--<span class="avatar" *ngIf="!this.user.avatar; else avatar;"><mat-icon>account_circle</mat-icon></span>-->
+            <!--<ng-template #avatar>-->
+              <!--<img class="avatar" src="{{this.user.avatar.path}}" width="30px" height="30px">-->
+            <!--</ng-template>-->
+            <!--<span>{{ this.user.name.firstname }}</span>-->
+            <!--<span> {{ this.user.name.lastname }}</span>-->
+          <!--</div>-->
+        <!--</button>-->
+      <!--</div>-->
+
+      <!--<mat-menu #menu="matMenu">-->
+        <!--<button mat-menu-item>-->
+          <!--<mat-icon class="nav-drop-item">assignment_ind</mat-icon>-->
+          <!--<span class="nav-drop-text" (click)="this.profilePage()">My account</span>-->
+        <!--</button>-->
+        <!--<button mat-menu-item>-->
+          <!--<mat-icon class="nav-drop-item">exit_to_app</mat-icon>-->
+          <!--<span class="nav-drop-text" (click)="this.logout()">Log out</span>-->
+        <!--</button>-->
+      <!--</mat-menu>-->
+    <!--</nav>-->
+
+    <div class="tour__info">
+      <app-money-panel [role]="user.role" *ngIf="showBoard && user" (showCreatePage)="showCreatePage($event)"></app-money-panel>
+      <app-invitation-employee [role]="user.role" *ngIf="showBoard && user" employee (showCreatePage)="showCreatePage($event)"></app-invitation-employee>
+    </div>
+    <app-tour-board [role]="user.role" *ngIf="showBoard && user" (showCreatePage)="showCreatePage($event)"></app-tour-board>
+    <router-outlet></router-outlet>
+  </div>
+</div>

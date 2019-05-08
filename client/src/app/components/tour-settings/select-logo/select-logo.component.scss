@@ -1,0 +1,88 @@
+.select__logo{
+  width: 100%;
+  height: 100%;
+  display: block;
+  .logo__wrapper{
+    width: 100%;
+    height: 100%;
+    display: block;
+    .logo{
+      width: 49%;
+      height: inherit;
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 50px;
+      mat-icon{
+        font-size: 200px;
+        display: block;
+        margin: auto;
+        width: 200px;
+        height: 200px;
+        margin-top: 70px;
+        color: #417257;
+      }
+
+      button{
+        display: block;
+        width: 200px;
+        height: 38px;
+        margin: 10px auto;
+        border-radius: 20px;
+        border: 2px solid #ffffff;
+        background: none;
+        color: green;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover{
+          border: 2px solid gray;
+          color: gray;
+        }
+      }
+
+      input{
+        @extend button;
+      }
+    }
+
+    .tour__pictures{
+      width: 49%;
+      height: inherit;
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 50px;
+      mat-icon{
+        font-size: 200px;
+        display: block;
+        margin: auto;
+        width: 200px;
+        height: 200px;
+        margin-top: 70px;
+        color: #417257;
+      }
+
+      button{
+        display: block;
+        width: 200px;
+        height: 38px;
+        margin: 10px auto;
+        border-radius: 20px;
+        border: 2px solid #ffffff;
+        background: none;
+        color: green;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover{
+          border: 2px solid gray;
+          color: gray;
+        }
+      }
+      input{
+        @extend button;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="staff-list">
+  <nav class="menu">
+    <ul>
+      <li>
+        <div class="title" ><i class="fa fa-user"></i>Employees</div>
+        <div class="list" *ngFor="let employee of this.staff">
+          <a>
+            <div class="staff__avatar">
+              <img *ngIf="!employee.avatar" src="../../../../../../assets/image/defaultAvatar.png">
+              <img *ngIf="employee.avatar" src="{{employee.avatar.path}}">
+            </div>
+            <span>{{employee.name.firstname}}. {{employee.name.lastname}}</span>,
+            <div><span>{{employee.job.name}} from </span><span> {{employee.company.name}} </span></div>
+          </a>
+
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

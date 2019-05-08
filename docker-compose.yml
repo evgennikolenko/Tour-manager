@@ -1,0 +1,48 @@
+version: '2.1'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbTourManager
+    volumes:
+      - /srv/dbTourManager/db:/var/lib/mysql
+    networks:
+      new:
+        aliases:
+          - database
+      legacy:
+        aliases:
+          - mysql
+
+  client:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./client
+    ports:
+      - 8080:80
+    networks:
+      - new
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=dbTourManager
+      - DB_USER=root
+      - DB_PASSWORD=root
+    ports:
+      - 9000:9000
+    networks:
+      - legacy
+    depends_on:
+      - db
+
+networks:
+  new:
+  legacy:
+
+

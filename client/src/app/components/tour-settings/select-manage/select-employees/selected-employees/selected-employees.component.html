@@ -1,0 +1,63 @@
+<div class="selected__employees">
+
+  <div  *ngIf="this.selectedEmployees.length === 0" class="anySelected">
+      <mat-icon>person_add_disabled</mat-icon>
+      <span>There are not selected users yet.</span>
+  </div>
+ <div *ngIf="this.selectedEmployees.length !== 0" class="wrapper">
+    <div class="table">
+
+      <div class="row header">
+        <div class="cell">
+          #
+        </div>
+        <div class="cell">
+          First
+        </div>
+        <div class="cell">
+          Last
+        </div>
+        <div class="cell">
+          Role
+        </div>
+        <div class="cell">
+          Company
+        </div>
+        <div class="cell">
+          Email
+        </div>
+        <div class="cell">
+          Salary
+        </div>
+        <div class="cell"></div>
+      </div>
+
+      <div class="row" *ngFor="let staff of selectedEmployees">
+        <div class="cell" data-title="Logo">
+          #1
+        </div>
+        <div class="cell" data-title="First">
+          {{staff.name.firstname}}
+        </div>
+        <div class="cell" data-title="Last">
+          {{staff.name.lastname}}
+        </div>
+        <div class="cell" data-title="Role">
+          {{staff.job.name}}
+        </div>
+        <div class="cell" data-title="Company">
+          {{staff.company.name}}
+        </div>
+        <div class="cell" data-title="Email">
+          {{staff.email}}
+        </div>
+        <div class="cell" data-title="Salary">
+          {{staff.payment}}$
+        </div>
+        <div class="cell" data-title="Salary">
+         <span (click)="this.onDeleteStaff(staff)">X</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

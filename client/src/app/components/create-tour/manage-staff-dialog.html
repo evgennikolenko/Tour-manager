@@ -1,0 +1,68 @@
+<div class="manage-staff-dialog">
+  <h1 mat-dialog-title>Manage Staff</h1>
+  <div mat-dialog-content class="dialog__content">
+    <div class="employees">
+      <div class="employee__title">
+        Registered Employees
+      </div>
+      <div class="employee__list">
+        <mat-list role="list" *ngFor="let employee of employees; last as last">
+
+          <mat-list-item [ngClass]="{active: isActive(employee)}" (click)="selectEmployee(employee)" role="listitem">
+            <img class="staff__avatar" *ngIf="employee.avatar; else noAvatar" src="{{employee.avatar.path}}">
+            <ng-template #noAvatar>
+              <img class="staff__avatar" src="../../../assets/image/defaultAvatar.png">
+            </ng-template>
+            {{employee.name.lastname}} {{employee.name.firstname}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <button class="add__employee" (click)="addEmployee()" mat-flat-button color="primary">Add</button>
+
+    <span class="select__error" *ngIf="error">{{error}}</span>
+
+    <div class="input-group employee__salary">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input [(ngModel)]="salary" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <div class="input-group-append">
+        <span class="input-group-text">.00</span>
+      </div>
+    </div>
+
+    <div class="input-group employee__email">
+      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">@example.com</span>
+      </div>
+    </div>
+
+
+    <div class="selected-employee">
+
+      <div class="employee__title">
+        Selected Employees
+      </div>
+
+      <div class="employee__list">
+        <mat-list role="list" *ngFor="let employee of getSelected()">
+          <mat-list-item role="listitem">
+            {{employee.name.lastname}} {{employee.name.firstname}}, {{employee.payment}}$
+            <button mat-mini-fab color="warn" (click)="deleteFromSelected(employee.id)"><span>-</span></button>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+    </div>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" mat-flat-button color="primary">Clean all</button>
+    <button mat-button  [mat-dialog-close]="true" mat-flat-button color="primary"  cdkFocusInitial>Ok</button>
+  </div>
+</div>
+
+

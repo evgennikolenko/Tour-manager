@@ -1,0 +1,18 @@
+<ngx-slick-carousel  *ngIf="this.selectedPlaces.length >= 3; else weather" class="carousel"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let place of this.selectedPlaces" class="slide">
+    <app-weather-in-city [place]="place"></app-weather-in-city>
+    <div class="place__info__weather">{{place.city}}, {{place.country}}</div>
+  </div>
+</ngx-slick-carousel>
+
+<ng-template #weather>
+  <div class="flexible__weather__wrapper">
+    <div class="flexible__weather" *ngFor="let place of this.selectedPlaces">
+      <app-weather-in-city [place]="place"></app-weather-in-city>
+      <div class="place__info">{{place.city}}, {{place.country}}</div>
+    </div>
+  </div>
+</ng-template>
+

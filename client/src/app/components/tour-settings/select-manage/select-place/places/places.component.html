@@ -1,0 +1,13 @@
+<div class="places">
+  <header class="places__header">Choose location</header>
+  <div  class="places__list">
+    <mat-list role="list" *ngFor="let place of places">
+      <mat-list-item (click)="this.selectPlace(place)" [ngClass]="{active: this.selectActivePlace(place)}">
+        <div>
+          <img src="../../../../../../assets/coutryFlags/blank.gif" class="flag flag-{{place.countryCode}}" alt="{{place.country}}" >
+        </div>
+        {{place.country}}, {{place.state}}, {{place.city}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

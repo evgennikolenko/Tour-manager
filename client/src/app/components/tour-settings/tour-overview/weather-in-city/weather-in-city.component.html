@@ -1,0 +1,28 @@
+<div class="weather__block" [tooltip]="tooltipWeather">
+  <div *ngIf="this.weather" class="weather__background" [ngStyle]="{background: 'url(' + this.weather.cityImg + ')'}"></div>
+  <div class="weather__img">
+    <i class="wi wi-day-sunny"></i>
+    <span>{{this.temperature}} &#8451;</span>
+
+    <div>
+      <div><i class="wi wi-sunrise"></i><span>{{this.sunrise}}</span></div>
+      <div><i class="wi wi-wi-sunset"><span>{{this.sunset}}</span></i></div>
+    </div>
+
+  </div>
+  <div class="weather__wind"><i class="wi wi-wind"></i><span>{{this.wind}} m/s</span></div>
+
+</div>
+
+
+<ng-template #tooltipWeather><div class="tooltip__weather" >
+  <div class="tooltip__weather__block" *ngFor="let forecast of this.forecasts | slice:0:5; ">
+      <div>{{forecast.day}}</div>
+      <div>{{this.returtDate(forecast.date)}}</div>
+      <div><i class="wi wi-sunrise"></i><span>{{forecast.code}}</span></div>
+      <div><i class="wi wi-sunrise"></i><span>{{forecast.low}} &#8451;</span></div>
+      <div><i class="wi wi-sunrise"></i><span>{{forecast.hight}} &#8451;</span></div>
+  </div>
+</div>
+</ng-template>
+

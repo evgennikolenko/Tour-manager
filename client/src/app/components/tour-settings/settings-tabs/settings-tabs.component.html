@@ -1,0 +1,92 @@
+<div class="tab-wrap">
+
+      <input #overview (click)="openMain()" type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+      <label #overviewLabel for="tab1">Overview</label>
+
+      <input #info type="radio" id="tab2" name="tabGroup1" class="tab">
+      <label for="tab2">Info</label>
+
+      <input #logo type="radio" id="tab3" name="tabGroup1" class="tab">
+      <label for="tab3">Tour logo</label>
+
+      <input #attachments type="radio" id="tab4" name="tabGroup1" class="tab">
+      <label for="tab4">Attachments</label>
+
+      <input #manage type="radio" id="tab5" name="tabGroup1" class="tab">
+      <label for="tab5">Manage</label>
+
+  <div class="tab__content tab__content__main">
+
+    <div class="tour__logo">
+      <img width="100%" height="100%" *ngIf="this.selectedTour" src="{{this.selectedTour.logo.path}}">
+    </div>
+
+    <div class="tour__name">
+      <h3>{{this.CreateTourForm.controls.name.value}}</h3>
+      <p>{{this.CreateTourForm.controls.description.value}}</p>
+    </div>
+
+    <app-staff-list [staff]="this.selectedEmployees"></app-staff-list>
+
+    <div #mapZone class="map__zone">
+      <ng-template #dynamic></ng-template>
+    </div>
+
+    <app-weather [ngClass]="this.tour.selectedPlaces.length < 3 ? 'flexible': ''" [selectedPlaces]="this.tour.selectedPlaces"></app-weather>
+    <app-world-clock  [selectedPlaces]="this.tour.selectedPlaces"></app-world-clock>
+
+    <div class="attachments">
+      <div class="attachments__header">Attachments</div>
+      <div class="attachments__list">
+        <mat-icon>file_copy</mat-icon>
+        <button *ngIf="this.generateDocFile">tour-info.doc</button>
+      </div>
+    </div>
+
+    <button *ngIf="this.currentUser.role === 'manager'; else invitation" (click)="this.submitForm(this.CreateTourForm)" class="save__button">
+      <mat-icon>save</mat-icon>
+    </button>
+
+    <button *ngIf="this.currentUser.role === 'manager'; else invitation " (click)="this.edit()" class="edit__button">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button class="approveInvitation" *ngIf="this.isInvitation" (click)="approveInvitation(selectedTour.id, 'approves')"><mat-icon>thumb_up</mat-icon></button>
+    <button class="rejectInvitation" *ngIf="this.isInvitation" (click)="rejectInvitation(selectedTour.id, 'rejects')">  <mat-icon>thumb_down</mat-icon></button>
+  </div>
+
+    <div class="tab__content">
+      <app-select-info [createForm]="this.CreateTourForm"></app-select-info>
+    </div>
+
+    <div class="tab__content">
+      <app-select-logo  [createForm]="this.CreateTourForm"></app-select-logo>
+    </div>
+
+    <div class="tab__content">
+      <app-select-attachment [generateDocFile]="this.generateDocFile"
+                             [createForm]="this.CreateTourForm"
+                             (generateDoc)="this.generateDoc($event)">
+      </app-select-attachment>
+    </div>
+
+  <div class="tab__content">
+    <app-select-palces (placeWasSelected)="placeWasSelected($event)"></app-select-palces>
+    <app-select-employees (selectEmployee)="this.selectEmployee($event)" [employees]="this.employees"></app-select-employees>
+    <app-selected-employees [selectedEmployees]="this.selectedEmployees" (deleteSelectedEmployee)="this.deleteSelectedEmployee($event)"></app-selected-employees>
+    <button *ngIf="isValid && !isValid['error']" class="check__createdTour" (click)="this.openOverview()">
+      <mat-icon>check_circle_outline</mat-icon>
+      <span>Check</span>
+    </button>
+
+    <div *ngIf="isValid && isValid['error']" class="error__info">
+      <mat-icon>warning</mat-icon>
+      <span>{{isValid['error']}}</span>
+    </div>
+  </div>
+
+  <div class="tour-spinner">
+    <ng-template #spinner></ng-template>
+  </div>
+
+</div>

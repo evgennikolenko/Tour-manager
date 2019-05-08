@@ -1,0 +1,104 @@
+.tours__window{
+  background: #ffffff;
+  min-width: 300px;
+  .tours__navbar{
+    height: 53px;
+    position: relative;
+    border: 1px solid #25a96d;
+    border-bottom: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    span{
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .logo{
+      width: 50px;
+      height: 50px;
+      margin-left: 5px;
+    }
+
+    .tour__addbtn{
+      float: right;
+      width: 35px;
+      height: 35px;
+      //background: darkgreen;
+      display: inline-block;
+      border-radius: 25px;
+      margin: 10px 5px 0 0;
+
+      mat-icon{
+        width: 35px;
+        height: 35px;
+        font-size: 35px;
+        color: #018B58;
+      }
+    }
+
+    .tour__sortbtn{
+      float: right;
+      width: 35px;
+      height: 35px;
+      display: inline-block;
+      margin: 10px 5px 0 0;
+      mat-icon {
+        font-size: 35px;
+        color:  #018B58;
+      }
+    }
+
+    .tour__sortby{
+      float: right;
+      color:  #018B58;
+      mat-form-field{
+        color:  #018B58;
+        height: 47px;
+        border-bottom: 2px solid #018B58;
+
+        mat-select{
+            mat-icon{
+              font-size: 55px;
+            }
+            mat-option{
+              display: inline-block;
+            }
+
+        }
+      }
+    }
+  }
+
+  .tours__layout{
+    border: 1px solid #25a96d;
+    mat-list{
+      mat-list-item {
+          position: relative;
+          height: 50px;
+          border-bottom: 1px solid #25a96d;
+          font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+          font-size: 16px;
+          .tour__date {
+            position: absolute;
+            right: 25px;
+            display: inline-block;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 14px;
+            color: gray;
+          }
+
+          .tour__name {
+
+          }
+
+          &:hover {
+            cursor: pointer;
+            background: darkgrey;
+          }
+      }
+    }
+    mat-paginator{
+
+    }
+  }
+}

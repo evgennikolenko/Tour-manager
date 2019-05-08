@@ -1,0 +1,24 @@
+<div class="attachment">
+  <div class="generate__icon">
+    <mat-icon>publish</mat-icon>
+  </div>
+  <button (click)="this.generate()">Generate</button>
+  <div class="generate" *ngIf="generateDocFile">
+    <div #loader class="overlay-loader">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="matIcon">
+      <mat-icon #matIcon>check_circle</mat-icon>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "dbTourManager",
+    "port": "3306",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root1",
+    "password": "root1",
+    "database": "dbTourManagerTest",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root1",
+    "password": "root1",
+    "database": "dbTourManager",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "dialect": "mysql"
+  }
+}

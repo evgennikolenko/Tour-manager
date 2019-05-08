@@ -1,0 +1,105 @@
+<form [formGroup]="RegistrationForm" (ngSubmit)="submitForm(RegistrationForm)">
+
+      <div class="form__userInfo">
+
+        <div class="userInfo__fields">
+          <mat-form-field>
+            <input matInput placeholder="Last name" [formControl]="this.RegistrationForm.controls.lastName">
+            <mat-error *ngIf="this.RegistrationForm.controls.lastName.invalid && this.RegistrationForm.controls.lastName.dirty">
+              Please enter a valid last name
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="userInfo__fields">
+          <mat-form-field>
+            <input matInput placeholder="First name" [formControl]="this.RegistrationForm.controls.firstName">
+            <mat-error *ngIf="this.RegistrationForm.controls.firstName.invalid && this.RegistrationForm.controls.firstName.dirty">
+              Please enter a valid first name
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="userInfo__fields">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                   [formControl]="this.RegistrationForm.controls.date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="this.RegistrationForm.controls.date.invalid && this.RegistrationForm.controls.date.dirty">
+              {{this.RegistrationForm.controls.date.errors.message}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="form__checkbox">
+
+        <div class="checkbox__fields">
+            <mat-radio-group name="gender" [formControl]="this.RegistrationForm.controls.gender">
+              <mat-radio-button class="col-3" value="male" color="primary">Male</mat-radio-button>
+              <mat-radio-button class="col-3" value="female" color="primary">Female</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="checkbox__fields">
+          <mat-radio-group name="role" [formControl]="this.RegistrationForm.controls.role">
+            <mat-radio-button class="col-3" value="manager" color="primary" disableRipple>Manager</mat-radio-button>
+            <mat-radio-button class="col-3" value="employee" color="primary" disableRipple>Employee</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="user__job">
+        <mat-form-field *ngIf="this.RegistrationForm.controls.role.value === 'employee'">
+          <mat-select placeholder="Select your job" [formControl]="this.RegistrationForm.controls.job">
+            <mat-option *ngFor="let job of jobs" [value]="job.id" >
+              <div class="company__logo">
+                <img src="{{job.company.logo}}"/>
+              </div>
+              <span class="job__name">{{job.job.name}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form__credits">
+        <div class="userInfo__fields">
+          <mat-form-field>
+            <input matInput type="email" placeholder="Enter your email" required [formControl]="this.RegistrationForm.controls.email">
+            <mat-error *ngIf="this.RegistrationForm.controls.email.invalid && this.RegistrationForm.controls.email.dirty">
+              Please enter a valid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="userInfo__fields">
+          <mat-form-field>
+            <input matInput [formControl]="this.RegistrationForm.controls.password"
+                   placeholder="Enter your password" [type]="!hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="this.RegistrationForm.controls.password.invalid && this.RegistrationForm.controls.password.dirty">
+              Please enter a valid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-center">
+        <mat-error *ngIf="this.error">
+          {{this.error}}
+        </mat-error>
+      </div>
+
+      <div class="form-row justify-content-center m-4">
+        <div class="col-md-2">
+          <button mat-stroked-button type="reset" color="link">Clear</button>
+        </div>
+        <div class="col-md-2">
+          <button mat-stroked-button [disabled]="formSubmitted || RegistrationForm.invalid" color="primary" type="submit">Sign in</button>
+        </div>
+      </div>
+
+    </form>
+

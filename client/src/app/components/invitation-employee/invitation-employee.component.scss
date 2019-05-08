@@ -1,0 +1,104 @@
+.invitation__block{
+  margin-top: 15px;
+  margin-left: 100px;
+  padding-left: 5px;
+  width: 280px;
+  border-radius: 5px;
+  position: relative;
+  .invitation__button{
+    display: inline-block;
+    width:50px;
+    height: 50px;
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    mat-icon{
+      width: inherit;
+      height: inherit;
+      font-size: 35px;
+      color: #018B59;
+    }
+  }
+
+  .invitation__buttonCount{
+    height: 15px;
+    width: 15px;
+    background: red;
+    border-radius: 50px;
+    position: absolute;
+    top: 0px;
+    left: 27px;
+
+    span{
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 10px;
+      width: 15px;
+      color: wheat;
+      display: block;
+      text-align: center;
+      font-weight: 800;
+    }
+  }
+  .invitation__list{
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #25a96d;
+    border-radius: 5px;
+    background: rgba(37, 169, 109, 0.14);
+    height: 310px;
+    overflow-y: auto;
+    &::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      background-color: #25a96d;
+    }
+
+    &::-webkit-scrollbar
+    {
+      width: 5px;
+      background-color: #018B59;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(31, 31, 31, 0.71);
+      background-color: #018B59;
+    }
+    mat-list{
+      mat-list-item{
+        height: 40px;
+        font-size: 16px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+        &:hover{
+          background: #23A96C;
+          cursor: pointer;
+        }
+
+
+        .tour__name{
+
+        }
+      }
+    }
+  }
+
+  .invitation__warn{
+    display: inline-block;
+    padding-top: 3px;
+    height: 50px;
+    vertical-align: top;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 17px;
+  }
+}
+
+

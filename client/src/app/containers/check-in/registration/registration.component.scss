@@ -1,0 +1,75 @@
+.company__logo{
+  height: 45px;
+  width: 60px;
+  margin-right: 12px;
+  display: inline-block;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
+.job__name{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+      form {
+        .form__userInfo{
+          .userInfo__fields{
+            width: 33%;
+            display: inline-block;
+          }
+        }
+        .user__job{
+          height: 45px;
+        }
+        .form__credits{
+          .userInfo__fields{
+            width: 40%;
+            display: inline-block;
+            mat-form-field{
+              mat-icon{
+                font-size: 18px;
+                position: absolute;
+                top: -13px;
+                left: -18px;
+              }
+            }
+          }
+        }
+
+        .form__checkbox{
+          margin-top: 25px;
+          .checkbox__fields{
+            width: 49%;
+            display: inline-block;
+
+              mat-radio-group{
+                mat-radio-button{
+                  display: inline;
+                }
+              }
+
+          }
+        }
+
+        .user__job{
+          margin-top: 15px;
+        }
+        .registration__checkButtonsBlock{
+          width: 100%;
+          position: relative;
+          height: 60px;
+          .registration__gender, .registration__role {
+            float: left;
+            width: 300px;
+            margin-left: 185px;
+
+          }
+          .registration__role{
+            width: 400px;
+            margin-left: 15px;
+          }
+        }
+      }
+

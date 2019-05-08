@@ -1,0 +1,51 @@
+<div class="manage-place-dialog">
+  <h1 mat-dialog-title>Manage Place</h1>
+  <div mat-dialog-content class="dialog__content">
+
+
+    <div class="places">
+      <div class="places__title">
+        Selected Places
+      </div>
+      <div *ngIf="role === 'manager'" class="places__list">
+        <mat-list role="list" *ngFor="let place of places">
+          <mat-list-item (click)="map.places(place)"  [ngClass]="{active: isActive(place)}">
+            <div>
+              <img src="../../../assets/coutryFlags/blank.gif" class="flag flag-{{place.countryCode}}" alt="{{place.country}}" >
+            </div>
+            {{place.country}}, {{place.state}}, {{place.city}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div *ngIf="role === 'employee'" class="places__list">
+        <mat-list role="list" *ngFor="let place of places">
+          <mat-list-item [ngClass]="{active: isActive(place)}">
+            <div><img src="../../../assets/coutryFlags/blank.gif" class="flag flag-{{place.countryCode}}" alt="{{place.country}}"></div>
+            {{place.country}}, {{place.state}}, {{place.city}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <div class="places__map">
+      <app-place-map
+        #map
+        appId="kG4I8fUQHhzkmmyVJ40I"
+        appCode="iWud5K5czcn5ybaxjczNBQ"
+        lat="51.5085300"
+        lng="-0.1257400"
+        width="100%"
+        height="600px">
+      </app-place-map>
+    </div>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-flat-button color="primary">Done</button>
+  </div>
+
+</div>
+
+

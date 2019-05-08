@@ -1,0 +1,17 @@
+<div class="avatar__block">
+  {{this.error}}
+  <img class="avatar__image" *ngIf="user.avatar; else noAvatar" src="{{user.avatar.path}}">
+  <ng-template #noAvatar>
+    <img class="avatar__image" src="{{this.defaultAvatar}}">
+  </ng-template>
+
+  <form [formGroup]="AvatarForm">
+    <div class="avatar__upload">
+      <mat-icon>add_a_photo</mat-icon>
+      <button (click)="fileInput.click()">
+      </button>
+      <input #fileInput type="file" (change)="upload($event)" style="display:none;" [formControl]="this.AvatarForm.controls.file" />
+    </div>
+  </form>
+
+</div>

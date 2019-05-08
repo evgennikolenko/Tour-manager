@@ -1,0 +1,53 @@
+<div class="tours__window">
+
+  <div class="tours__navbar">
+
+    <img class="logo" src="../../../assets/image/tourlogo.png" alt="tour">
+    <span>My Tours</span>
+
+    <div class="tour__sortby">
+      <mat-form-field>
+        <mat-select placeholder="sort by:" [placeholder]="sortValue ? sortValue : 'Sort by'" [formControl]="sortBy" (selectionChange)="sort('', sortBy.value)">
+          <mat-option value="startDate">start date</mat-option>
+          <mat-option value="endDate">end date</mat-option>
+          <mat-option value="name">name</mat-option>
+          <mat-option value="state">state</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div (click)="sort('desc', '')" class="tour__sortbtn">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+
+    <div (click)="sort('asc', '')" class="tour__sortbtn">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </div>
+
+    <div manager class="tour__addbtn" (click)="createTour()">
+      <mat-icon>add_circle_outline</mat-icon>
+    </div>
+
+  </div>
+
+  <div class="tours__layout">
+    <mat-list>
+      <mat-list-item *ngFor="let tour of tours ; last as last" (click)="updateTour(tour)" matTooltip="{{tour.description}}">
+        <mat-icon *ngIf="tour.state === 'completed'" mat-list-icon>event_available</mat-icon>
+        <mat-icon *ngIf="tour.state === 'started'" mat-list-icon>timer</mat-icon>
+        <mat-icon *ngIf="tour.state === 'planned'" mat-list-icon>event_note</mat-icon>
+        <p mat-line class="tour__name">{{tour.name}}</p>
+        <p class="tour__date"> {{tour.startDate | date}} - {{tour.endDate | date}} </p>
+      </mat-list-item>
+    </mat-list>
+    <mat-paginator [length]="length"
+                   [pageIndex]="pageIndex"
+                   [pageSize]="limit"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageEvent($event)">
+    </mat-paginator>
+
+  </div>
+
+</div>
+

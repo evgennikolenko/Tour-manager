@@ -1,0 +1,25 @@
+<div class="user__profile">
+  <div class="profile__wrapper">
+    <div class="profile__avatar">
+      <app-profile-avatar [user]="this.user"></app-profile-avatar>
+    </div>
+    <div class="profile__form">
+      <div id="container">
+        <h1>Profile</h1>
+
+        <form [formGroup]="ProfileForm" (ngSubmit)="submitForm(ProfileForm)">
+          <input type="text" name="firstname" placeholder="First name" [formControl]="this.ProfileForm.controls.firstname">
+          <input type="text" name="lastname" placeholder="Last name" [formControl]="this.ProfileForm.controls.lastname">
+          <input type="email" name="email" placeholder="E-mail" [formControl]="this.ProfileForm.controls.email">
+          <input type="password" name="pass" placeholder="Old password" [formControl]="this.ProfileForm.controls.oldPassword">
+          <input type="password" name="pass" placeholder="New password" [formControl]="this.ProfileForm.controls.newPassword">
+
+          <div class="form__error">{{error}}</div>
+          <button mat-flat-button class="change__button" (click)="this.enableChange()" *ngIf="this.showChange">Change</button>
+          <button mat-flat-button class="save__button" type="submit" (click)="this.enableChange()"
+                  [disabled]="formSubmitted || ProfileForm.invalid" *ngIf="this.showSave">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

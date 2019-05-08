@@ -1,0 +1,49 @@
+.tour__window{
+  -webkit-box-shadow: 2px 3px 36px -5px rgba(40,40,40,1);
+  -moz-box-shadow: 2px 3px 36px -5px rgba(40,40,40,1);
+  box-shadow: 2px 3px 36px -5px rgba(40,40,40,1);
+  header{
+    width: 100%;
+    height: 30px;
+    padding-top: 3px;
+    background: #eeefec;
+    div{
+      display: inline-block;
+      width: 15px;
+      margin-left: 5px;
+      height: 15px;
+      border-radius: 100%;
+      background: #2BB03D;
+    }
+    .header__exitButton{
+      background: #F45F55;
+      cursor: pointer;
+      &:before{
+        position: absolute;
+        content: "X";
+        font-size: 13px;
+        height: 12px;
+        font-weight: 600;
+        color: #4d0000;
+        margin-left: 3px;
+        margin-top: -2px;
+      }
+    }
+    .header__yellowButton{
+      background: #F7B82F;
+    }
+    span{
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 17px;
+      margin-left: 10px;
+    }
+  }
+
+  app-settings-tabs{
+    display: block;
+    width: 100%;
+    //height: 665px;
+    background: darkgrey;
+    margin: auto;
+  }
+}
